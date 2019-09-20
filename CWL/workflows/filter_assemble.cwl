@@ -36,8 +36,14 @@ outputs:
     outputSource:
       - spades/output_dir
     type: Directory?
-    'sbg:x': 136.92469787597656
-    'sbg:y': -58.07530975341797
+    'sbg:x': 154.22640991210938
+    'sbg:y': -141.89308166503906
+  - id: output
+    outputSource:
+      - quast/output
+    type: Directory?
+    'sbg:x': 286.974853515625
+    'sbg:y': -2.3647799491882324
 steps:
   - id: sickle
     in:
@@ -75,4 +81,14 @@ steps:
     label: spades
     'sbg:x': -28.142852783203125
     'sbg:y': -17.617238998413086
+  - id: quast
+    in:
+      - id: input
+        source: spades/output_dir
+    out:
+      - id: output
+    run: ../tools/quast.cwl
+    label: quast
+    'sbg:x': 132.30186462402344
+    'sbg:y': 85.18868255615234
 requirements: []
