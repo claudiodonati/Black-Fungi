@@ -13,16 +13,7 @@ inputs:
     type: File?
     'sbg:x': -494
     'sbg:y': -59
-  - id: output
-    type: string?
-    'sbg:exposed': true
 outputs:
-  - id: output_dir
-    outputSource:
-      - spades/output_dir
-    type: Directory?
-    'sbg:x': 109
-    'sbg:y': -52
   - id: output_s_file
     outputSource:
       - sickle/output_s_file
@@ -41,6 +32,12 @@ outputs:
     type: File?
     'sbg:x': -199.203125
     'sbg:y': 61.192962646484375
+  - id: output_dir
+    outputSource:
+      - spades/output_dir
+    type: Directory?
+    'sbg:x': 136.92469787597656
+    'sbg:y': -58.07530975341797
 steps:
   - id: sickle
     in:
@@ -49,11 +46,11 @@ steps:
       - id: input_r
         source: input_r
       - id: output_f
-        default: pippo_f.fastq
+        default: filtered_f.fastq
       - id: output_r
-        default: pippo_r.fastq
+        default: filtered_r.fastq
       - id: output_s
-        default: pippo_s.fastq
+        default: filtered_s.fastq
     out:
       - id: output_f_file
       - id: output_r_file
@@ -69,12 +66,13 @@ steps:
       - id: input_r
         source: sickle/output_r_file
       - id: output
-        default: pippo_dir
-        source: output
+        default: assembled
+      - id: input_s
+        source: sickle/output_s_file
     out:
       - id: output_dir
     run: ../tools/spades.cwl
     label: spades
-    'sbg:x': -62
-    'sbg:y': -35
+    'sbg:x': -28.142852783203125
+    'sbg:y': -17.617238998413086
 requirements: []

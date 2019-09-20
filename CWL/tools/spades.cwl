@@ -19,8 +19,13 @@ inputs:
   - id: output
     type: string?
     inputBinding:
-      position: 2
+      position: 3
       prefix: '-o'
+  - id: input_s
+    type: File?
+    inputBinding:
+      position: 2
+      prefix: '-s'
 outputs:
   - id: output_dir
     type: Directory?
