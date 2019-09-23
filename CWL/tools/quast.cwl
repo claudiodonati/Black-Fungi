@@ -12,11 +12,18 @@ inputs:
   - id: input
     type: Directory
     inputBinding:
-      position: 0
+      position: 1
       valueFrom: $(inputs.input.path)/contigs.fasta
-outputs:
   - id: output
+    type: string?
+    inputBinding:
+      position: 0
+      prefix: '-o'
+outputs:
+  - id: output_dir
     type: Directory?
+    outputBinding:
+      glob: $(inputs.output)
 label: quast
 requirements:
   - class: DockerRequirement

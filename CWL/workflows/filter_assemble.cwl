@@ -13,6 +13,9 @@ inputs:
     type: File?
     'sbg:x': -494
     'sbg:y': -59
+  - id: output
+    type: string?
+    'sbg:exposed': true
 outputs:
   - id: output_s_file
     outputSource:
@@ -38,12 +41,12 @@ outputs:
     type: Directory?
     'sbg:x': 154.22640991210938
     'sbg:y': -141.89308166503906
-  - id: output
+  - id: output_dir_1
     outputSource:
-      - quast/output
+      - quast/output_dir
     type: Directory?
-    'sbg:x': 286.974853515625
-    'sbg:y': -2.3647799491882324
+    'sbg:x': 334.99188232421875
+    'sbg:y': 23
 steps:
   - id: sickle
     in:
@@ -79,16 +82,18 @@ steps:
       - id: output_dir
     run: ../tools/spades.cwl
     label: spades
-    'sbg:x': -28.142852783203125
-    'sbg:y': -17.617238998413086
+    'sbg:x': -29
+    'sbg:y': -17
   - id: quast
     in:
       - id: input
         source: spades/output_dir
-    out:
       - id: output
+        source: output
+    out:
+      - id: output_dir
     run: ../tools/quast.cwl
     label: quast
-    'sbg:x': 132.30186462402344
-    'sbg:y': 85.18868255615234
+    'sbg:x': 189
+    'sbg:y': 46
 requirements: []

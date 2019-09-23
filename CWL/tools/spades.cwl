@@ -28,7 +28,7 @@ inputs:
       prefix: '-s'
 outputs:
   - id: output_dir
-    type: Directory?
+    type: Directory
     outputBinding:
       glob: $(inputs.output)
 label: spades
