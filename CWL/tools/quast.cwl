@@ -19,11 +19,20 @@ inputs:
     inputBinding:
       position: 0
       prefix: '-o'
+      valueFrom: $(inputs.output)
 outputs:
-  - id: output_dir
+  - id: report
+    type: File?
+    outputBinding:
+      glob: $(inputs.output)/report.txt
+  - id: basic_stats
     type: Directory?
     outputBinding:
-      glob: $(inputs.output)
+      glob: $(inputs.output)/basic_stats
+  - id: busco_stats
+    type: Directory?
+    outputBinding:
+      glob: $(inputs.output)/busco_stats
 label: quast
 requirements:
   - class: DockerRequirement

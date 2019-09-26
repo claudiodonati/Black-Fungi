@@ -27,26 +27,38 @@ outputs:
     outputSource:
       - sickle/output_r_file
     type: File?
-    'sbg:x': -50.203125
-    'sbg:y': -179
+    'sbg:x': -113.40499114990234
+    'sbg:y': -187.5972900390625
   - id: output_f_file
     outputSource:
       - sickle/output_f_file
     type: File?
-    'sbg:x': -199.203125
-    'sbg:y': 61.192962646484375
+    'sbg:x': -165.68551635742188
+    'sbg:y': 51.32805252075195
   - id: output_dir
     outputSource:
       - spades/output_dir
     type: Directory?
     'sbg:x': 154.22640991210938
     'sbg:y': -141.89308166503906
-  - id: output_dir_1
+  - id: report
     outputSource:
-      - quast/output_dir
+      - quast/report
+    type: File?
+    'sbg:x': 354.49322509765625
+    'sbg:y': -109.06109619140625
+  - id: busco_stats
+    outputSource:
+      - quast/busco_stats
     type: Directory?
-    'sbg:x': 334.99188232421875
-    'sbg:y': 23
+    'sbg:x': 365.805419921875
+    'sbg:y': 45.05881881713867
+  - id: basic_stats
+    outputSource:
+      - quast/basic_stats
+    type: Directory?
+    'sbg:x': 300.3110656738281
+    'sbg:y': 185.34463500976562
 steps:
   - id: sickle
     in:
@@ -91,9 +103,11 @@ steps:
       - id: output
         source: output
     out:
-      - id: output_dir
+      - id: report
+      - id: basic_stats
+      - id: busco_stats
     run: ../tools/quast.cwl
     label: quast
-    'sbg:x': 189
-    'sbg:y': 46
+    'sbg:x': 184
+    'sbg:y': 71
 requirements: []
